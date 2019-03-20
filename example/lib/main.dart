@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:learn_plugin/learn_plugin.dart';
+import 'package:learn_plugin/pipe_plugin.dart';
 
 void main() => runApp(MyApp());
 
@@ -45,10 +46,23 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Plugin example app111'),
+          backgroundColor: Colors.red,
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child:Column(
+            children: <Widget>[
+              Text('Running on: $_platformVersion\n'),
+              RaisedButton(
+                child: Text('TextPipeDemo'),
+                onPressed: (){
+                  PipePlugin ppl =PipePlugin();
+                  ppl.sendString('Text from main.dart');
+                },
+              )
+            ],
+          )
+          
         ),
       ),
     );
